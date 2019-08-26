@@ -1,0 +1,211 @@
+/* pages/video/video.wxss */
+
+.page-product-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #242424;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-top {
+  width: 750rpx;
+  height: 422rpx;
+  background: #000;
+}
+.video-top text {
+  font-size: 40rpx;
+  text-align: center;
+  color: #fff;
+}
+.video {
+  width: 750rpx;
+  height: 422rpx;
+}
+
+.book-name {
+  width: 90%;
+  min-height: 60rpx;
+  margin: 40rpx auto 0 auto;
+  font-size: 32rpx;
+  color: #030303;
+  letter-spacing: 1.8rpx;
+  line-height: 50rpx;
+  word-break: break-all;
+
+}
+
+.book-description {
+  font-size: 24rpx;
+  color: #030303;
+  letter-spacing: 0;
+  width: 90%;
+  margin: 0 auto;
+  /* text-align: center; */
+  word-break: break-all;
+  margin-bottom: 33rpx;
+}
+
+
+/* 预约按钮 */
+
+.reservation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #00a874;
+  border: 0 solid #ebebeb;
+  height: 98rpx;
+  text-align: center;
+  line-height: 98rpx;
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: 2.14rpx;
+  border-radius: 0;
+}
+
+/* 切换 */
+.content_line {
+  left: 276rpx;
+}
+.chat_line {
+  left: 396rpx;
+}
+.show {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+/* 聊天 */
+.loading {
+  width: 80rpx;
+  height: 80rpx;
+  display: block; 
+  margin: 10rpx auto;
+}
+.user {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.50);
+  padding-left:30rpx;
+  padding-top:20rpx;
+  display: inline;
+}
+.user-teacher {
+  color: red;
+}
+.user-content {
+  font-size: 30rpx;
+  color: #fff;
+  width: 700rpx;
+  padding-bottom: 20rpx;
+  display: inline-block;
+  padding-left:30rpx;
+}
+.user-input {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  /* z-index: 999; */
+  background: #030303;
+  display: flex;
+  align-items: center;
+}
+.input {
+  width: 560rpx;
+  /* padding-top: 20rpx; */
+  box-sizing: border-box;
+  height: 72rpx;
+  line-height: 72rpx;
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  border-bottom-left-radius: 8rpx;
+  border-top-left-radius: 8rpx;
+  display: inline-block;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  background: #3C3C3C;
+  color: #fff;
+}
+.user-input .send {
+  color:#555;
+  font-size:30rpx;
+  display:inline-block;
+  vertical-align:top;
+  border: none;
+  height: 72rpx;
+  line-height:72rpx;
+  width:152rpx;
+  background: #2A2A2A;
+  text-align:center;
+  margin-top:15rpx;
+  border-bottom-right-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+}
+#sendTrue {
+  background: #00A874;
+  color: #fff;
+}
+/* 加载更多 */
+.more {
+  font-size: 28rpx;
+  text-align: center;
+  padding-bottom: 30rpx;
+  color: #8C9095;
+}
+/* common */
+.blur5{
+  opacity: 0.5;
+}
+.orange10{
+  color: #F35510;
+}
+
+.opacity{
+  width:750rpx;
+  height: 50rpx;
+  background: #ccc;
+  opacity: 0.3;
+  position: relative;
+  top:-60rpx;
+  left:0;
+  
+}
+.opacity .imgs{
+  margin-top:3rpx;
+  width:40rpx;
+  height: 40rpx;
+  /* border:2rpx solid black; */
+  position: absolute;
+  top:5rpx;
+  right:10rpx;
+}
+
+/*控制条*/
+.live-player {
+  position:fixed;
+top:0;
+
+}
+.live-player .controls-bg{
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  height: 80rpx;
+  width: 80rpx;
+  background: #eee;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.live-player .full-screen {
+  position: absolute;
+  bottom: 15rpx;
+  right: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+  margin: 10rpx;
+}

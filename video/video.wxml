@@ -1,0 +1,51 @@
+<!--pages/video/video.wxml-->
+<wxs src="../../common/datetimeConverter.wxs" module="DTC" />
+<view class="page-product-wrap" bindtap='handleShowHeight'>
+  <view wx:if="{{islive}}" class='video-top'>
+    <!-- 未开始 或 已结束 -->
+    <!-- <image wx:if="{{detail.state == 1 || detail.state == 3}}" class='video' mode="aspectFill" src="https://sfile.tl100.com/tl-book/wxa/images/live_banner.jpg"></image> -->
+    <view wx:if="{{start_time}}">
+      <text wx:if="{{detail.state == 1}}" style='display:block;padding-top:200rpx;'>距离开课还有</text>
+      <text wx:if="{{detail.state == 1}}" style='display:block;text-align:center;'>{{detail.start_time}}</text>
+    </view>
+     <view wx:if="{{!start_time && detail.state == 1}}" style='display:block;text-align:center;padding-top:200rpx;color:#fff;'>课程暂未开放</view> 
+    <text wx:if="{{detail.state == 3 || detail.state == 4}}" style='display:block;padding-top:200rpx;'>已结束</text>
+    <live-player wx:if="{{detail.state == 2}}" id="livePlayer" class="video live-player" bindtap="showLiveControls" bindfullscreenchange="fullscreenchange" src="{{detail.res_download_url}}" mode="live" autoplay>
+      <!-- 控制条 -->
+      <cover-view class="controls-bg"></cover-view>
+      <cover-image class="full-screen" src="{{isFullScreen?'https://sfile.tl100.com/tl-book/wxa/images/live-fullscreen-close.png':'https://sfile.tl100.com/tl-book/wxa/images/live-fullscreen-open.png'}}" bindtap='handFullscreen'></cover-image>
+    </live-player>
+    <!-- 回放 -->
+    <!-- <video wx:if="{{detail.state == 4}}" id="myVideo" class="video" src="{{detail.res_download_url}}" autoplay></video> -->
+  </view>
+    <view class="directory" style='position:fixed;top:422rpx;'>
+      <!-- <video-item videoList="{{detailList}}" class="{{!is_content_chat?'show':'hidden'}}" resourceId="{{resource_id}}" /> -->
+      <view style='padding-top:20rpx;' class="show" id='chatContent'>
+      <image src='https://sfile.tl100.com/tl-book/wxa/images/loading.gif' class='loading' wx:if="{{loading}}"></image>
+        <scroll-view scroll-y style='height:{{scroll_height}}' bindscrolltoupper="getMoreChatList" scroll-top='{{scrollTop}}' id='scrollView'>
+          <view wx:for="{{chatList.data}}" wx:key="index">
+            <text class="user">{{item.nickname}}<text class="user" wx:if="{{item.nickname}}" style='display:inline;color: red;' wx:if="{{item.role == 1}}">（管理员）</text><text class="user" wx:if="{{item.nickname}}" style='display:inline;color: red;' wx:if="{{item.role == 2}}">（老师）</text></text>
+            <text class="user-content">{{item.content}}</text>
+          </view>
+          <view wx:for="{{UserChatList}}" wx:key="index" wx:if="{{isUser}}">
+            <text class="user" wx:if="{{item.nickname}}">{{item.nickname}}<text class="user" wx:if="{{item.nickname}}" style='display:inline;color: red;' wx:if="{{item.role == 1}}">（管理员）</text><text class="user" wx:if="{{item.nickname}}" style='display:inline;color: red;' wx:if="{{item.role == 2}}">（老师）</text></text>
+            <text class="user-content">{{item.content}}</text>
+          </view>
+        </scroll-view>
+        <text wx:if="{{isOpen}}" style='font-size:30rpx;padding-left:30rpx;z-index:999'>{{statusMsg}}</text>
+        <view class='user-input' wx:if="{{islive && detail.state != 1 }}" style="bottom:{{text_height_show?text_height:'0'}}px">
+          <textarea bindinput='bindContent' class='input' value="{{input_value_content}}" show-confirm-bar="{{showConfirm}}" fixed='{{fixed}}' cursor="10" cursor-spacing="10" style='z-index:998' bindfocus="handleGetFocus" adjust-position="{{false}}" bindblur="handleShowHeight" style="{{is_ios?'':'padding-top:20rpx'}}"></textarea>
+          <text bindtap="handleSendMessage" class='send' id="{{send ? 'sendTrue' : ''}}">发送</text>
+        </view>
+      </view>
+      <!-- <view class='more' bindtap='getMoreChatList' wx:if="{{isShowMore}}">加载更多</view> -->
+
+
+    </view>
+   <view wx:if="{{islive && detail.state == 1 }}">
+    <view class="reservation" wx:if="{{is_pre_buy}}">已预约</view>
+    <form report-submit bindsubmit="formSubmit" wx:else>
+      <button formType="submit" class="reservation">我要预约</button>
+    </form>
+  </view> 
+</view>

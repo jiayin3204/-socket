@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "video-item": "../../component/videoItem/videoItem"
+  },
+  "navigationBarBackgroundColor": "#030303",
+  "navigationBarTitleText": "上课中",
+  "backgroundColor": "#030303",
+  "navigationBarTextStyle": "white"
+}
